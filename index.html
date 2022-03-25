@@ -37,7 +37,7 @@
         pc.ontrack = function (evt) {
             console.log("add remote stream");
             console.log(evt);
-            remoteView.src = URL.createObjectURL(evt.streams[0]);
+            remoteView.srcObject = evt.streams[0];
         };
 
         if(navigator.getUserMedia) {
@@ -45,7 +45,7 @@
             navigator.mediaDevices.getUserMedia({"audio": true, "video": true}).then((stream) => {
                         console.log("start streaming");
                         console.log(stream);
-                        selfView.src = URL.createObjectURL(stream);
+                        selfView.srcObject = stream;
                         pc.addStream(stream);
 
                         if (isCaller)
